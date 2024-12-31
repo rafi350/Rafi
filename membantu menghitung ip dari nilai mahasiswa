@@ -1,0 +1,53 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+// Fungsi untuk menghitung IP
+double calculateIP(const vector<double>& grades) {
+    double totalPoints = 0.0;
+    for (double grade : grades) {
+        if (grade >= 85) {
+            totalPoints += 4.0; // A
+        } else if (grade >= 80) {
+            totalPoints += 3.7; // A-
+        } else if (grade >= 75) {
+            totalPoints += 3.3; // B+
+        } else if (grade >= 70) {
+            totalPoints += 3.0; // B
+        } else if (grade >= 65) {
+            totalPoints += 2.7; // B-
+        } else if (grade >= 60) {
+            totalPoints += 2.3; // C+
+        } else if (grade >= 55) {
+            totalPoints += 2.0; // C
+        } else if (grade >= 50) {
+            totalPoints += 1.7; // C-
+        } else if (grade >= 45) {
+            totalPoints += 1.0; // D
+        } else {
+            totalPoints += 0.0; // F
+        }
+    }
+    return totalPoints / grades.size(); // Mengembalikan rata-rata IP
+}
+
+int main() {
+    int n;
+    cout << "Masukkan jumlah mata kuliah: ";
+    cin >> n;
+
+    vector<double> grades(n);
+    
+    // Menginput nilai dari pengguna
+    for (int i = 0; i < n; i++) {
+        cout << "Masukkan nilai untuk mata kuliah " << (i + 1) << ": ";
+        cin >> grades[i];
+    }
+
+    // Menghitung dan menampilkan IP
+    double ip = calculateIP(grades);
+    cout << "Indeks Prestasi (IP) Anda adalah: " << ip << endl;
+
+    return 0;
+}
